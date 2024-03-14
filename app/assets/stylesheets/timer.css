@@ -1,7 +1,15 @@
+/* from: https://fonts.google.com/specimen/Satisfy */
+@font-face {
+  font-family: 'Satisfy';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/assets/Satisfy-Regular.ttf) format('truetype');
+}
+
 .timer {
   font-size: 3em;
-  font-weight: 600;
-  font-family: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+  font-weight: 400;
+  font-family: 'Satisfy', 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
 
   display: flex;
   flex-direction: column;
