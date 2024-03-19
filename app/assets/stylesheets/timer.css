@@ -1,10 +1,10 @@
 /* from: https://fonts.google.com/specimen/Satisfy */
-@font-face {
+/* @font-face {
   font-family: 'Satisfy';
   font-style: normal;
   font-weight: 400;
   src: url(/assets/Satisfy-Regular.ttf) format('truetype');
-}
+}*/
 
 .timer {
   font-size: 3em;
