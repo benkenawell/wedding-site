@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timer</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/application.css" />
+    <link rel="stylesheet" href="stylesheets/timer.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "./js/stimulus.js",
+          "luxon": "./js/luxon.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from '@hotwired/stimulus';
+      import TimerController from './js/timer_controller.js';
+
+      window.Stimulus = Application.start();
+      Stimulus.register('timer', TimerController);
+    </script>
+  </head>
+  <body>
+    <div class="timer" data-controller="timer" data-timer-date-value="2025-03-08T18:00:00.000Z">
+      <div data-timer-target="month"></div>
+      <div data-timer-target="day"></div>
+      <div data-timer-target="hour"></div>
+      <div data-timer-target="minute"></div>
+      <div data-timer-target="second"></div>
+    </div>
+  </body>
+</html>
