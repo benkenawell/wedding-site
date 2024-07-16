@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: black;
+  }
+}
