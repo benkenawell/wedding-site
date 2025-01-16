@@ -22,7 +22,7 @@ export default class extends Controller {
     const duration = targetDate.diff(now, ['month', 'day', 'hour', 'minute', 'second', 'millisecond']);
     
     const month = duration.months;
-    this.monthTarget.innerHTML = `${month} month${month === 0 ? '' : 's'}`;
+    this.monthTarget.innerHTML = `${month} month${month === 1 ? '' : 's'}`;
     
     const day = duration.days;
     this.dayTarget.innerHTML = `${day} day${day === 1 ? '' : 's'}`;
