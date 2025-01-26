@@ -7,30 +7,18 @@
     <link rel="stylesheet" href="stylesheets/application.css" />
     <link rel="stylesheet" href="stylesheets/timer.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Satisfy" />
     <script type="importmap">
       {
         "imports": {
-          "@hotwired/stimulus": "./js/stimulus.js",
           "luxon": "./js/luxon.js"
         }
       }
     </script>
-    <script type="module">
-      import { Application } from '@hotwired/stimulus';
-      import TimerController from './js/timer_controller.js';
-
-      window.Stimulus = Application.start();
-      Stimulus.register('timer', TimerController);
-    </script>
+    <script type="module" src="/js/timer-element.js"></script>
+    <script type="module" src="/js/interval-switcher.js"></script>
   </head>
   <body>
-    <div class="timer" data-controller="timer" data-timer-date-value="2025-03-08T18:00:00.000Z">
-      <div data-timer-target="month"></div>
-      <div data-timer-target="day"></div>
-      <div data-timer-target="hour"></div>
-      <div data-timer-target="minute"></div>
-      <div data-timer-target="second"></div>
-    </div>
+    <timer-element class="timer" intervals="month day hour minute second" date-target="2025-03-08T18:00:00.000Z">Loading...</timer-element>
   </body>
 </html>
