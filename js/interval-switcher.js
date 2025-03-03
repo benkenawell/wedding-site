@@ -11,6 +11,9 @@ window.addEventListener('keyup', (event) => {
   if(["m", "M"].includes(event.key)) {
     changeInterval('month day hour minute second');
   }
+  if(["d", "D"].includes(event.key)) {
+    changeInterval('day hour minute second');
+  }
 });
 
 
@@ -18,7 +21,7 @@ window.addEventListener('keyup', (event) => {
 let touchstartX = 0
 let touchendX = 0
 const intervalOptions = {
-  options: ['month day hour minute second', 'week day hour minute second'],
+  options: ['month day hour minute second', 'week day hour minute second', 'day hour minute second'],
   get current() {
     return this.options.indexOf(document.querySelector('timer-element').getAttribute('intervals')) ?? 0;
   },
