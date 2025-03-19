@@ -16,10 +16,7 @@ window.addEventListener('keyup', (event) => {
   }
 });
 
-
-/** for mobile devices, allow changing with a swipe action */
-let touchstartX = 0
-let touchendX = 0
+/** for rotating throuhg some preset selections */
 const intervalOptions = {
   options: ['month day hour minute second', 'week day hour minute second', 'day hour minute second'],
   get current() {
@@ -29,33 +26,21 @@ const intervalOptions = {
     return this.options[(this.current + 1) % this.options.length];
   },
   prev() {
-    return this.options[Math.abs(this.current - 1) % this.options.length];
+    return this.options[(this.current - 1 + this.options.length) % this.options.length];
   }
 }
 
-function minDist(dist) {
-  return Math.abs(touchstartX - touchendX) > dist;
-}
-
-function checkDirection() {
-    if (touchendX < touchstartX && minDist(100)) {
-      changeInterval(intervalOptions.prev());
-    }
-    if (touchendX > touchstartX && minDist(100)) {
-      changeInterval(intervalOptions.next())
-    } 
-}
-
-document.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX
+document.addEventListener('swipe', ({direction}) => {
+  if(direction === 'left') changeInterval(intervalOptions.prev());
+  if(direction === 'right') changeInterval(intervalOptions.next());
+});
+window.addEventListener('keyup', ({code}) => {
+  if(code === "ArrowLeft") changeInterval(intervalOptions.prev());
+  if(code === "ArrowRight") changeInterval(intervalOptions.next());
 });
 
-document.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX
-    checkDirection()
-});
 
-/** save/restore the default timer interval */
+/** save/restore the last set timer interval */
 const LocalInterval = {
   key: 'last-interval',
   set value(newInterval) {
