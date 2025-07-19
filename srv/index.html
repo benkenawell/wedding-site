@@ -1,3 +1,5 @@
+{{$dict := include "./data/wedding-dates.json" | fromJson }}
+{{$name := .Req.URL.Query.Get "name" | default "katie" }}
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,6 +22,12 @@
     <script type="module" src="/js/interval-switcher.js"></script>
   </head>
   <body>
-    <timer-element class="timer" intervals="month day hour minute second" date-target="2025-06-04T20:00:00.000Z">Loading...</timer-element>
+    <timer-element
+      class="timer"
+      intervals="month day hour minute second"
+      date-target="{{ get $dict $name }}"
+    >
+        Loading...
+      </timer-element>
   </body>
 </html>

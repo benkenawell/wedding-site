@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# similar nginx command
-# podman run --name wedding-nginx --rm -v ./:/usr/share/nginx/html:ro -p 3000:80 -d docker.io/library/nginx
-
 podman run --rm \
   -p 3000:80 \
   -v ./srv:/srv/ \

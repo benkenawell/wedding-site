@@ -1,3 +1,7 @@
 http://localhost {
-    file_server
+  root * /srv
+  templates
+  file_server {
+    hide ./data/*
   }
+}

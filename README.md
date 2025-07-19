@@ -1,3 +1,4 @@
 # README
 
-This site is statically hosted on Github Pages and provides some client side content related to my wedding.
+This site is no longer statically hosted on Github. Instead, it uses caddy to include some dynamic, templated based behavior.
+
