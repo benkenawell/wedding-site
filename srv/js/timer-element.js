@@ -40,13 +40,11 @@ class TimerElement extends HTMLElement {
   updateTime() {
     const now = DateTime.now();
     const targetDate = DateTime.fromISO(this.dateValue);
-    const duration = targetDate.diff(now, this.intervalSegments);
-    // console.log("intervals", now, this.intervalSegments)
-    // console.log("duration", duration);
+    const dates = [now, targetDate].sort((a, b) => b - a);
+    const duration = dates[0].diff(dates[1], this.intervalSegments);
 
 
     for(const [key, val] of Object.entries(duration.values)) {
-      // console.log(key, val)
       if(key === 'milliseconds') continue;
       this.setIntervalTarget(key, `${val} ${removeS(key)}${val === 1 ? '' : 's'}`);
     }
