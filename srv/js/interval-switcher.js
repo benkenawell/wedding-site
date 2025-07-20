@@ -14,11 +14,19 @@ window.addEventListener('keyup', (event) => {
   if(["d", "D"].includes(event.key)) {
     changeInterval('day hour minute second');
   }
+  if(["y", "Y"].includes(event.key)) {
+    changeInterval('year month day hour minute second');
+  }
 });
 
 /** for rotating throuhg some preset selections */
 const intervalOptions = {
-  options: ['month day hour minute second', 'week day hour minute second', 'day hour minute second'],
+  options: [
+    'month day hour minute second',
+    'week day hour minute second',
+    'day hour minute second',
+    'year month day hour minute second'
+  ],
   get current() {
     return this.options.indexOf(document.querySelector('timer-element').getAttribute('intervals')) ?? 0;
   },
