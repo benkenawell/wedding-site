@@ -48,27 +48,6 @@ class TimerElement extends HTMLElement {
       if(key === 'milliseconds') continue;
       this.setIntervalTarget(key, `${val} ${removeS(key)}${val === 1 ? '' : 's'}`);
     }
-    return;
-    
-    const month = duration.months;
-    // this.monthTarget.innerHTML = `${month} month${month === 1 ? '' : 's'}`;
-    this.setIntervalTarget('month', `${month} month${month === 1 ? '' : 's'}`)
-    
-    const day = duration.days;
-    // this.dayTarget.innerHTML = `${day} day${day === 1 ? '' : 's'}`;
-    this.setIntervalTarget('day', `${day} day${day === 1 ? '' : 's'}`)
-    
-    const hour = duration.hours;
-    // this.hourTarget.innerHTML = `${hour} hour${hour === 1 ? '' : 's'}`;
-    this.setIntervalTarget('hour',`${hour} hour${hour === 1 ? '' : 's'}`)
-    
-    const minute = duration.minutes;
-    // this.minuteTarget.innerHTML = `${minute} minute${minute === 1 ? '' : 's'}`;
-    this.setIntervalTarget('minute', `${minute} minute${minute === 1 ? '' : 's'}`)
-
-    const second = duration.seconds;
-    // this.secondTarget.innerHTML = `${second} second${second === 1 ? '' : 's'}`;
-    this.setIntervalTarget('second', `${second} second${second === 1 ? '' : 's'}`)
   }
 }
 
