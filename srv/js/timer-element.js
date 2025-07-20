@@ -43,10 +43,15 @@ class TimerElement extends HTMLElement {
     const dates = [now, targetDate].sort((a, b) => b - a);
     const duration = dates[0].diff(dates[1], this.intervalSegments);
 
-
     for(const [key, val] of Object.entries(duration.values)) {
       if(key === 'milliseconds') continue;
       this.setIntervalTarget(key, `${val} ${removeS(key)}${val === 1 ? '' : 's'}`);
+    }
+    if(targetDate < now && !this.querySelector('#ago')) {
+      const agoElem = document.createElement("div");
+      agoElem.id = "ago"
+      agoElem.innerText = "ago";
+      this.appendChild(agoElem)
     }
   }
 }
