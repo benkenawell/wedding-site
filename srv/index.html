@@ -1,5 +1,6 @@
-{{$dict := include "./data/wedding-dates.json" | fromJson }}
-{{$name := .Req.URL.Query.Get "name" | default "katie" }}
+{{$dict := include "./data/wedding.json" | fromJson }}
+{{$weddings := get $dict "weddings"}}
+{{$name := .Req.URL.Query.Get "name" | default (get $dict "nextWedding") }}
 <!DOCTYPE html>
 <html>
   <head>
@@ -22,12 +23,17 @@
     <script type="module" src="/js/interval-switcher.js"></script>
   </head>
   <body>
+    {{range $weddings}}
+    {{if eq (lower $name) .name}}
     <timer-element
       class="timer"
       intervals="month day hour minute second"
-      date-target="{{ get $dict $name }}"
+      date-target="{{ .date }}"
     >
-        Loading...
-      </timer-element>
+      Loading...
+    </timer-element>
+    {{break}}
+    {{end}}
+    {{end}}
   </body>
 </html>
