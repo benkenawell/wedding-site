@@ -1,0 +1,8 @@
+creation_rules:
+  - path_regex: data/wedding\.json$
+    age:
+      # framework local
+      - age1uzgeuf0xvadfenu0h700nn9cn47guytg5hyaz96nw5ugwfcrwf9qs9hxvu
+      # fedora server
+      - age1glsdk00xe0gpqvlxwrva4597t0k2wgeyt6wxgy50t4ae0pglk5qqtups9w
+

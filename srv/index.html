@@ -1,4 +1,4 @@
-{{$dict := include "./data/wedding.json" | fromJson }}
+{{$dict := include "./wedding.json" | fromJson }}
 {{$weddings := get $dict "weddings"}}
 {{$name := .Req.URL.Query.Get "name" | default (get $dict "nextWedding") }}
 <!DOCTYPE html>

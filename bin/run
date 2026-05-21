@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-podman run --rm \
+# load unencrypted file at runtime
+sops exec-file ./data/wedding.json \
+  'podman run --rm \
   -p 3000:80 \
   -v ./srv:/srv/ \
   -v ./conf:/etc/caddy \
+  -v {}:/etc/weddings/wedding.json \
   --name wedding-site \
-  docker.io/library/caddy
+  docker.io/library/caddy'

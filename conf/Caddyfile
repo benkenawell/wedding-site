@@ -1,7 +1,7 @@
 http://localhost {
   root * /srv
-  templates
-  file_server {
-    hide ./data/*
-  }
+  templates {
+      root /etc/weddings
+    }
+  file_server
 }
