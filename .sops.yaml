@@ -1,4 +1,12 @@
 creation_rules:
+  - path_regex: data/wedding\.yaml$
+    age:
+      # framework local
+      - age1uzgeuf0xvadfenu0h700nn9cn47guytg5hyaz96nw5ugwfcrwf9qs9hxvu
+      # fedora server
+      - age1glsdk00xe0gpqvlxwrva4597t0k2wgeyt6wxgy50t4ae0pglk5qqtups9w
+      # opentofu generated key
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICPUcPTLkQr8J3LoIgho1vj8vXY+CqNXOCcCUg7LktcX
   - path_regex: data/wedding\.json$
     age:
       # framework local
