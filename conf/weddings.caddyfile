@@ -1,5 +1,6 @@
-http://localhost {
-  root * /srv
+wedding.kenawell.family {
+  log
+  root * /srv/weddings
   templates {
       root /etc/weddings
     }
