@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+sops decrypt \
+  --output ./tmp/wedding.json \
+  --output-type json \
+  ./data/wedding.yaml
+trap "rm ./tmp/wedding.json" EXIT
+
+caddy run --config - --adapter caddyfile <<EOF
+:3000 {
+  root ./srv
+  templates {
+    root ./tmp
+  }
+  file_server
+}
+EOF
