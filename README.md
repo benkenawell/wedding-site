@@ -4,8 +4,8 @@ This site is no longer statically hosted on Github. Instead, it uses caddy to in
 
 ## To Run Locally
 
-`bin/run` will start it in a Caddy container using podman
+`mise run run` will start it in a Caddy container using podman
 
-## To load data
+## Wedding Data
 
-`bin/get-data` will populate the wedding data for deployment
+Stored locally, encrypted with sops.
