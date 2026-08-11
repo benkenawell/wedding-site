@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 #MISE description="build the deb package"
 #USAGE flag "-t --target <file>" help="file to write debian package to." default="out.deb"
 #USAGE flag "-v --version <version>" env="DEB_VERSION" help="version number to write into the package."
