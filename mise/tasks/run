@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#MISE description="run the wedding site locally"
 
 sops decrypt \
   --output ./tmp/wedding.json \
