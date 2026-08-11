@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#MISE description = "generate the next version number"
+#MISE quiet = true
+
+set -euo pipefail
+
+prefix=$(date +%Y.%m)
+last=$(git tag -l "v${prefix}.*" | sed "s/^v${prefix}\.//" | sort -n | tail -1)
+next=$((${last:-0} + 1))
+version="${prefix}.${next}"
+
+printf "%s" "$version"
+# only print new line if it's a tty
+if [[ -t 1 ]]; then printf "\n"; fi

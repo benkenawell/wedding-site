@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#MISE description = "get the currently released version by git tag"
+#MISE quiet = true
+
+current="$(git tag -l 'v*' | sed 's/^v//' | sort -V | tail -1)"
+
+if [[ -z "$current" ]]; then
+  echo "no version detected" >&2
+else
+  printf '%s' "$current"
+  if [[ -t 1 ]]; then printf "\n"; fi
+fi
