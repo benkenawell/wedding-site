@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitoring wedding dates
+
+[Install]
+WantedBy=multi-user.target
+
+[Path]
+PathModified=/etc/weddings/wedding.yaml

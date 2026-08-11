@@ -1,0 +1,11 @@
+[Unit]
+Description=Place wedding dates
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=oneshot
+Environmenet=SOPS_AGE_PRIVATE_KEY_FILE=/root/.ssh/id_ed25519
+ExecStart=/usr/bin/mkdir -p /run/weddings
+ExecStart=/usr/local/bin/sops --decrypt --output /run/weddings/wedding.json --output-type json /etc/weddings/wedding.yaml

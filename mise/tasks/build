@@ -1,0 +1,9 @@
+#!usr/bin/env bash
+#MISE description="build the deb package"
+#USAGE flag "-t --target <file>" help="file to write debian package to." default="out.deb"
+#USAGE flag "-v --version <version>" env="DEB_VERSION" help="version number to write into the package."
+#USAGE example "mise run build:deb --version 1.0.0 --target out.deb" help="build a test package in the current directory"
+
+set -euo pipefail
+
+DEB_PACKAGE="${usage_version?}" nfpm package --packager deb --target "${usage_target?}"

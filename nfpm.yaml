@@ -1,0 +1,49 @@
+# This is an example nfpm configuration file.
+# Make sure to check the documentation at https://nfpm.goreleaser.com
+#
+# The lines below are called `modelines`. See `:help modeline`
+# Feel free to remove those if you don't want/need to use them.
+# yaml-language-server: $schema=https://nfpm.goreleaser.com/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
+
+name: "kenaweddings"
+arch: "amd64"
+platform: "linux"
+version: ${DEB_PACKAGE}
+section: "default"
+priority: "extra"
+# replaces:
+#   - foobar
+# provides:
+#   - bar
+depends:
+  - caddy
+# recommends:
+#   - whatever
+# suggests:
+#   - something-else
+# conflicts:
+#   - not-foo
+#   - not-bar
+maintainer: "Benjamin Kenawell"
+homepage: "https://wedding.kenawell.family"
+description: |
+  A wedding countdown timer for my family weddings
+# vendor: "FooBarCorp"
+# license: "MIT"
+# changelog: "changelog.yml"
+contents:
+  - src: ./srv
+    dst: /srv/weddings
+  - src: ./data/wedding.yaml
+    dst: /etc/weddings/wedding.yaml
+  - src: ./conf/weddings.caddyfile
+    dst: /etc/caddy/caddyfiles/weddings.caddyfile
+  - src: ./conf/units/
+    dst: /etc/systemd/sysytem/
+# TODO: include some systemd unit files to decrypt wedding.yaml
+overrides:
+  deb:
+    scripts:
+      postinstall: ./conf/scripts/postinstall.sh
+      postremove: ./conf/scripts/postremove.sh

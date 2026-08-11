@@ -2,7 +2,7 @@ wedding.kenawell.family {
   log
   root * /srv/weddings
   templates {
-      root /etc/weddings
+      root /run/weddings
     }
   file_server
 }

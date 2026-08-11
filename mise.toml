@@ -1,2 +1,3 @@
 [tools]
 caddy = "latest"
+nfpm = "latest"
