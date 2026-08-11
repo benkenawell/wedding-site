@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#MISE description="cut a build for release"
+#USAGE flag "-f --force" help="allow release with dirty working tree"
+#USAGE flag "-y --yes" help="assume yes"
+#USAGE flag "-d --dry-run" help="only dry run the version. Will not tag or push"
+
+set -euo pipefail
+
+die() {
+  echo "$@" >&2
+  exit 1
+}
+
+git rev-parse --git-dir &>/dev/null || die "error: not a git repo"
+[ -n "$(git status --porcelain)" ] && [ "${usage_force:-false}" != "true" ] &&
+  die "error: working tree is dirty, commit or stash first"
+
+git fetch --tags --quiet
+
+version=$(mise run version:next)
+
+echo "current HEAD: $(git log -1 --oneline)"
+if [ "${usage_yes:-false}" != "true" ]; then
+  read -rp "Tag this commit as ${version}? [y/N] " answer
+  [[ "$answer" == [yY] ]] || {
+    echo "aborted"
+    exit 0
+  }
+else
+  echo "tagging as: ${version}"
+fi
+
+if [ "${usage_dry_run:-false}" != "true" ]; then
+  target_dir="$HOME/.cache/weddings"
+  mkdir -p "$target_dir"
+  mise run build:deb \
+    --version "${version}" \
+    --target "$target_dir/${version}.deb"
+  git tag -a "v${version}" -m "Released $version"
+  git push origin "v$version"
+
+  echo "Released $version"
+else
+  echo "dry run mode enabled."
+fi
