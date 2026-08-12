@@ -40,7 +40,7 @@ contents:
   - src: ./conf/weddings.caddyfile
     dst: /etc/caddy/caddyfiles/weddings.caddyfile
   - src: ./conf/units/
-    dst: /etc/systemd/sysytem/
+    dst: /etc/systemd/system/
 # TODO: include some systemd unit files to decrypt wedding.yaml
 overrides:
   deb:
